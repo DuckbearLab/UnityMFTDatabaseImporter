@@ -1,0 +1,13 @@
+{
+  "name": "com.duckbearlab.mftdabaseimporter",
+  "version": "0.0.1",
+  "displayName": "MFT Database Importer",
+  "description": "Adds MFT database importing capabilities to Unity.",
+  "author": {
+    "name": "DuckbearLab",
+    "email": "duckbearlab@gmail.com",
+    "url": "https://duckbearlab.com"
+  },
+  "type": "tool",
+  "hideInEditor": false
+}
