@@ -1,7 +1,11 @@
 {
     "name": "Unity.DuckbearLab.MFTDatabseImporter.Runtime",
-    "references": [],
-    "includePlatforms": [],
+    "references": [
+        "GUID:6631cbb304675df45ac37f02a18dfa29"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
