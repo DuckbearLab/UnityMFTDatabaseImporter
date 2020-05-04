@@ -154,7 +154,7 @@ namespace UFLT.Textures
 						if (PixelsBPC1 == null && PixelsBPC2 == null)
 							ReadPixels();
 
-						_Texture = new Texture2D(Size[0], Size[1], Size[2] == 4 ? TextureFormat.ARGB32 : TextureFormat.RGB24, true);
+						_Texture = new Texture2D(Size[0], Size[1], Size[2] == 4 || Size[2] == 2 ? TextureFormat.ARGB32 : TextureFormat.RGB24, true);
                         // DuckbearLab: FIX!
 						//_Texture.hideFlags = HideFlags.DontSave;
 
@@ -312,7 +312,16 @@ namespace UFLT.Textures
 						PixelsBPC1[i].a = 0xff;
 					}
 				}
-				else if (Size[2] == 3)
+                else if (Size[2] == 2)
+                {
+                    // Grayscale with transparency
+                    for (int i = 0; i < PixelsBPC1.Length; ++i)
+                    {
+                        PixelsBPC1[i].a = PixelsBPC1[i].g;
+                        PixelsBPC1[i].b = PixelsBPC1[i].g = PixelsBPC1[i].r;
+                    }
+                }
+                else if (Size[2] == 3)
 				{
 					for (int i = 0; i < PixelsBPC1.Length; ++i)
 					{
