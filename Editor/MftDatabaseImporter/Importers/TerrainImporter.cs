@@ -276,8 +276,8 @@ namespace DatabaseImporter.Importers
         {
             if (terrainMft.LevelsData.Count > curPartLevel + 1)
             {
-                int colMult = terrainMft.LevelsData[curPartLevel + 1].Columns / terrainMft.LevelsData[curPartLevel + 1].Columns;
-                int rowMult = terrainMft.LevelsData[curPartLevel + 1].Rows / terrainMft.LevelsData[curPartLevel + 1].Rows;
+                int colMult = terrainMft.LevelsData[curPartLevel + 1].Columns / terrainMft.LevelsData[curPartLevel].Columns;
+                int rowMult = terrainMft.LevelsData[curPartLevel + 1].Rows / terrainMft.LevelsData[curPartLevel].Rows;
                 return File.Exists(Path.Combine(terrainMft.Folder, string.Format(@"v{1}\r{3}\{0}-v{1}-c{2}-r{3}.flt", terrainMft.DatasetName, PadNumber(curPartLevel + 1, 2), PadNumber(curPartCol * colMult, 3), PadNumber(curPartRow * rowMult, 3))));
             }
             return false;
