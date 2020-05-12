@@ -194,10 +194,13 @@ namespace DatabaseImporter.Importers
                 float scale = Mathf.Pow(2, GetVtLevel(curPartLevel)) / vtMft.NumTileTexels;
                 var textureScale = new Vector2(scale, scale);
 
-                sharedMaterials[mRenderer.sharedMaterials.Length - 1] = newMat;
-                sharedMaterials[mRenderer.sharedMaterials.Length - 1].SetTexture("_BaseMap", tex);
-                sharedMaterials[mRenderer.sharedMaterials.Length - 1].SetTextureScale("_BaseMap", textureScale);
-                sharedMaterials[mRenderer.sharedMaterials.Length - 1].name = tex.name + textureScale.ToString();
+                newMat.SetTexture("_BaseMap", tex);
+                newMat.SetTextureScale("_BaseMap", textureScale);
+                newMat.name = tex.name + textureScale.ToString();
+
+                for (int i = 0; i < mRenderer.sharedMaterials.Length; i++)
+                    if(sharedMaterials[i].GetTexture("_BaseMap") == null)
+                        sharedMaterials[i] = newMat;
 
                 mRenderer.sharedMaterials = sharedMaterials;
             }
