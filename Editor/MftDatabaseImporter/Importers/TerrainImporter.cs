@@ -199,8 +199,7 @@ namespace DatabaseImporter.Importers
                 newMat.name = tex.name + textureScale.ToString();
 
                 for (int i = 0; i < mRenderer.sharedMaterials.Length; i++)
-                    if(sharedMaterials[i].GetTexture("_BaseMap") == null)
-                        sharedMaterials[i] = newMat;
+                    sharedMaterials[i] = newMat;
 
                 mRenderer.sharedMaterials = sharedMaterials;
             }
