@@ -75,8 +75,12 @@ namespace DatabaseImporter.Importers
         private void AddTerrainRefLatLon()
         {
             var refLatLon = ParentTransform.gameObject.AddComponent<TerrainRefLatLon>();
+
             refLatLon.RefLat = terrainMft.TerrainRefLat;
             refLatLon.RefLon = terrainMft.TerrainRefLon;
+
+            refLatLon.OriginX = terrainMft.TerrainOriginX;
+            refLatLon.OriginY = terrainMft.TerrainOriginY;
         }
 
         private void AddTerrainMinimap()
@@ -251,8 +255,8 @@ namespace DatabaseImporter.Importers
                 (curPartCol / groupingAmount * groupingAmount) * terrainMft.TerrainExtentX / terrainMft.LevelsData[curPartLevel].Columns,
                 0,
                 (curPartRow / groupingAmount * groupingAmount) * terrainMft.TerrainExtentY / terrainMft.LevelsData[curPartLevel].Rows);
-            Vector3 terrainOffset = new Vector3(terrainMft.TerrainOriginX, 0, terrainMft.TerrainOriginY);
-            terrainPart.transform.position = halfPartOffset + partPosition + terrainOffset;
+            //Vector3 terrainOffset = new Vector3(terrainMft.TerrainOriginX, 0, terrainMft.TerrainOriginY);
+            terrainPart.transform.position = halfPartOffset + partPosition/* + terrainOffset*/;
         }
 
         private string GetFltPath(MftData mft)
