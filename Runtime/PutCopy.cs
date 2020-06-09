@@ -130,6 +130,7 @@ public class PutCopy : MonoBehaviour
             gameObj.name = copy.ToCopy.name;
             ApplyTextureSwitches(gameObj);
         }
+        Done?.Invoke();
     }
 
 
