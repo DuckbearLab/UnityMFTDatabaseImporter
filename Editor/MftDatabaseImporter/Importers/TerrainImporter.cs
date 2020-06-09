@@ -240,6 +240,8 @@ namespace DatabaseImporter.Importers
 
             db.UnityGameObject.transform.parent = ParentTransform;
 
+            //Debug.Log(db.Log.ToString());
+
             return db.UnityGameObject;
         }
 
