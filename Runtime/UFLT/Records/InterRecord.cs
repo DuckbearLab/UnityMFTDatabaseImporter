@@ -205,6 +205,10 @@ namespace UFLT.Records
 				//UnityGameObject.transform.parent = (Parent as InterRecord).UnityGameObject.transform;
 			}
 
+            // Add Comment
+            if (!string.IsNullOrEmpty(Comment))
+                UnityGameObject.AddComponent<UFLT.MonoBehaviours.Comment>().Value = Comment;
+
 			// Processes children
 			base.ImportIntoScene();
 
