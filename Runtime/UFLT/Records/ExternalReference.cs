@@ -162,6 +162,8 @@ namespace UFLT.Records
 		{
 			RootHandler.Handler[Opcodes.Matrix] = HandleMatrix;
             // DuckbearLab: FIX! Handle faces
+            RootHandler.Handler[Opcodes.Face] = HandleFace;
+            // DuckbearLab: FIX! Handle faces
             ChildHandler.Handler[Opcodes.Face] = HandleFace;
 			RootHandler.ThrowBacks.UnionWith(RecordHandler.ThrowBackOpcodes);
 		}
