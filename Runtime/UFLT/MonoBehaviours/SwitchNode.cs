@@ -28,7 +28,18 @@ namespace UFLT.MonoBehaviours
 
         void Awake()
         {
-            index = HashLocation(transform.position, masks.Length);
+            //index = HashLocation(transform.position, masks.Length);
+            SetMaskIndex(index);
+        }
+
+        public void SetMaskIndex(int index)
+        {
+            if(index >= masks.Length)
+            {
+                Debug.LogError("Invalid switch mask index!", this);
+                return;
+            }
+            this.index = index;
             int mask = masks[index];
             for (int i = 0; i < transform.childCount; i++)
             {
