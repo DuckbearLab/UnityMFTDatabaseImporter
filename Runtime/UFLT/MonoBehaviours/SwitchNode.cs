@@ -24,6 +24,11 @@ namespace UFLT.MonoBehaviours
         /// Node masks
         /// </summary>
         public int[] masks;
+
+        /// <summary>
+        /// Active DIS switch state
+        /// </summary>
+        public string ActiveDISState { get; set; } = "";
         #endregion
 
         void Awake()
