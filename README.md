@@ -18,7 +18,7 @@ Here you can choose to either `Add package from git URL` or `Add package from di
 
 #### Add package from disk
 
-1. Download this git repository as ZIP file to your computer and then select it.
+1. Download this git repository as ZIP file to your computer and then extract it.
 2. Choose `Add package from disk`
 3. Select the extracted folder
 
