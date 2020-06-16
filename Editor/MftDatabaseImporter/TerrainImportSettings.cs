@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,13 +19,16 @@ public class TerrainImportSettings : ScriptableObject {
     {
         get
         {
-            string settingPath = "Packages/com.duckbearlab.mftdabaseimporter/Editor/MftDatabaseImporter/Settings.asset";
+            string settingsPath = "Assets/MftDatabaseImporter/Settings.asset";
 
-            var settingsAsset = AssetDatabase.LoadAssetAtPath<TerrainImportSettings>(settingPath);
+            var settingsAsset = AssetDatabase.LoadAssetAtPath<TerrainImportSettings>(settingsPath);
             if (!settingsAsset)
             {
-                AssetDatabase.CreateAsset(TerrainImportSettings.CreateInstance<TerrainImportSettings>(), "Packages/com.duckbearlab.mftdabaseimporter/Editor/MftDatabaseImporter/Settings.asset");
-                settingsAsset = AssetDatabase.LoadAssetAtPath<TerrainImportSettings>(settingPath);
+                if (!Directory.Exists(Path.GetDirectoryName(settingsPath)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(settingsPath));
+
+                AssetDatabase.CreateAsset(TerrainImportSettings.CreateInstance<TerrainImportSettings>(), settingsPath);
+                settingsAsset = AssetDatabase.LoadAssetAtPath<TerrainImportSettings>(settingsPath);
             }
 
             return settingsAsset;
