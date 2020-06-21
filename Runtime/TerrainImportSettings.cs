@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class TerrainImportSettings : ScriptableObject {
@@ -15,6 +17,7 @@ public class TerrainImportSettings : ScriptableObject {
 
     public TreeNameGameObj[] Trees;
 
+#if UNITY_EDITOR
     public static TerrainImportSettings Instance
     {
         get
@@ -34,4 +37,5 @@ public class TerrainImportSettings : ScriptableObject {
             return settingsAsset;
         }
     }
+#endif
 }
