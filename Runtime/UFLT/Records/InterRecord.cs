@@ -221,6 +221,10 @@ namespace UFLT.Records
 				m.normals = Normals.ToArray();
 				m.uv = UVS.ToArray();
 
+                // DuckbearLab: Fix for very large meshes
+                if(VertexPositions.Count >= ushort.MaxValue)
+                    m.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+
 				MeshRenderer mr = UnityGameObject.AddComponent<MeshRenderer>();
 				Material[] mats = new Material[SubMeshes.Count];
 				MeshFilter mf = UnityGameObject.AddComponent<MeshFilter>();
