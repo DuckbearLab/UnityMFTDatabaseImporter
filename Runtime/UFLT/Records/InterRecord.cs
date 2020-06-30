@@ -362,10 +362,10 @@ namespace UFLT.Records
 			// Convert to position, rotation & scale
 			Position = m.GetPosition();
             // DuckbearLab: FIX! Inverted X
-            Position = new Vector3(-Position.x, Position.y, Position.z);
+            Position = new Vector3(Position.x, Position.z, Position.y);
 			Rotation = m.GetRotation();
             // DuckbearLab: FIX! Inverted X
-            Rotation = Quaternion.Euler(Rotation.eulerAngles.x, Rotation.eulerAngles.y, -Rotation.eulerAngles.z);
+            Rotation = Quaternion.Euler(Rotation.eulerAngles.x, -Rotation.eulerAngles.z, Rotation.eulerAngles.y);
 			Scale = m.GetScale();
 			return true;
 		}

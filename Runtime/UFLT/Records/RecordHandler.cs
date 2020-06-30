@@ -53,7 +53,8 @@ namespace UFLT.Records
 						Opcodes.DegreeOfFreedom,
 						Opcodes.Sound,
 						Opcodes.ClipRegion,
-						Opcodes.ExternalReference
+						Opcodes.ExternalReference,
+                        Opcodes.Face
 					};
 
 		/// <summary>

@@ -548,8 +548,6 @@ namespace UFLT.Records
             ChildHandler.Handler[Opcodes.Group] = HandleGroup;
 			ChildHandler.Handler[Opcodes.ExternalReference] = HandleExternalReference;
             ChildHandler.Handler[Opcodes.LevelOfDetail] = HandleLevelOfDetail;
-            // DuckbearLab: FIX! Handle faces
-            ChildHandler.Handler[Opcodes.Face] = HandleFace;
         }
 
         /// <summary>
@@ -623,7 +621,7 @@ namespace UFLT.Records
 
                 // TODO: Convert between left and right hand coordinate systems
                 // Rotate so z is up
-                UnityGameObject.transform.Rotate( new Vector3( 270, 180, 0 ) );
+                //UnityGameObject.transform.Rotate( new Vector3( 270, 180, 0 ) );
 
                 // DuckbearLab: FIX! Useless :P
                 /*Log.Write(string.Format("Finished Importing Into Scene, total time taken: {0:0.00} seconds", timer.Elapsed.TotalSeconds));

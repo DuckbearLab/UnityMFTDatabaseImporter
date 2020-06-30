@@ -39,10 +39,12 @@ namespace UFLT.Records
 			ColorNameIndex = db.Stream.Reader.ReadUInt16();
 			Flags = db.Stream.Reader.ReadInt16();
             // DuckbearLab: FIX! Inverted X
-			Coordinate = new double[3] { -db.Stream.Reader.ReadDouble(), db.Stream.Reader.ReadDouble(), db.Stream.Reader.ReadDouble() };
-			Normal = new Vector3(-db.Stream.Reader.ReadSingle(), db.Stream.Reader.ReadSingle(), db.Stream.Reader.ReadSingle());
+            double x = db.Stream.Reader.ReadDouble(), z = db.Stream.Reader.ReadDouble(), y = db.Stream.Reader.ReadDouble();
+            Coordinate = new double[3] { x, y, z };
+            float xN = db.Stream.Reader.ReadSingle(), zN = db.Stream.Reader.ReadSingle(), yN = db.Stream.Reader.ReadSingle();
+            Normal = new Vector3(xN, yN, zN);
 
-			Color32 c = new Color32();
+            Color32 c = new Color32();
 			c.a = db.Stream.Reader.ReadByte();
 			c.b = db.Stream.Reader.ReadByte();
 			c.g = db.Stream.Reader.ReadByte();
