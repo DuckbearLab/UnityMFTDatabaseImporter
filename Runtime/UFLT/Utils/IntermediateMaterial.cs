@@ -153,6 +153,10 @@ namespace UFLT.Utils
                     mat.SetTexture("_BaseMap", texture);
                     mat.name = texture.name;
                 }
+                else
+                {
+	                mat.name = MainTexture.FileName;
+                }
             }
 
             // DuckbearLab: FIX! It is not used now :D

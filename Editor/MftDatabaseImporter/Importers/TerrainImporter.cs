@@ -189,21 +189,22 @@ namespace DatabaseImporter.Importers
             tex.Apply();
             tex.name = Path.GetFullPath(vtTexture);
 
+            var newMat = new Material(MaterialToUse);
+            
+            float scale = Mathf.Pow(2, GetVtLevel(curPartLevel)) / vtMft.NumTileTexels;
+            var textureScale = new Vector2(scale, scale);
+
+            newMat.SetTexture("_BaseMap", tex);
+            newMat.SetTextureScale("_BaseMap", textureScale);
+            newMat.name = tex.name + textureScale.ToString();
+            
             foreach (var mRenderer in result.GetComponentsInChildren<MeshRenderer>())
             {
-                var newMat = new Material(MaterialToUse);
-
                 var sharedMaterials = mRenderer.sharedMaterials;
-
-                float scale = Mathf.Pow(2, GetVtLevel(curPartLevel)) / vtMft.NumTileTexels;
-                var textureScale = new Vector2(scale, scale);
-
-                newMat.SetTexture("_BaseMap", tex);
-                newMat.SetTextureScale("_BaseMap", textureScale);
-                newMat.name = tex.name + textureScale.ToString();
-
+                
                 for (int i = 0; i < mRenderer.sharedMaterials.Length; i++)
-                    sharedMaterials[i] = newMat;
+                    if(sharedMaterials[i].name.StartsWith("vt_sub.rgb"))
+                        sharedMaterials[i] = newMat;
 
                 mRenderer.sharedMaterials = sharedMaterials;
             }
