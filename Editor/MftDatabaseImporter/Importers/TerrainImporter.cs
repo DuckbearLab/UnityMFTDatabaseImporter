@@ -184,9 +184,24 @@ namespace DatabaseImporter.Importers
             byte[] dxt = new byte[bytes.Length - 128];
             System.Buffer.BlockCopy(bytes, 128, dxt, 0, bytes.Length - 128);
 
-            Texture2D tex = new Texture2D(width, height, TextureFormat.DXT1, false);
-            tex.LoadRawTextureData(dxt);
+            Texture2D srcText = new Texture2D(width, height, TextureFormat.DXT1, false);
+            srcText.LoadRawTextureData(dxt);
+            srcText.Apply();
+
+            RenderTexture renderTex = RenderTexture.GetTemporary(width, height);
+            Graphics.Blit(srcText, renderTex);
+
+            RenderTexture.active = renderTex;
+
+            // Generate mip maps
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, true);
+            tex.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
             tex.Apply();
+            tex.Compress(true);
+
+            RenderTexture.active = null;
+            RenderTexture.ReleaseTemporary(renderTex);
+
             tex.name = Path.GetFullPath(vtTexture);
 
             var newMat = new Material(MaterialToUse);
