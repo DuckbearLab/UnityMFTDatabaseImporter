@@ -164,7 +164,7 @@ namespace UFLT.Textures
 							_Texture.SetPixels(PixelsBPC2);
 
 						_Texture.Apply();
-						//_Texture.Compress( true ); // Compress into DXT format
+						_Texture.Compress( true ); // Compress into DXT format
                         // DuckbearLab: FIX!
 						//_Texture.name = Name;
                         _Texture.name = Path.GetFileName(File);
