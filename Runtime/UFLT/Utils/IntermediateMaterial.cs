@@ -122,7 +122,7 @@ namespace UFLT.Utils
             if (MainTexture != null)
                 texture = MaterialBank.FindOrCreateTexture(MainTexture);
 
-            bool textureTransparent = texture != null && (texture.format == TextureFormat.Alpha8 || texture.format == TextureFormat.ARGB32 || texture.format == TextureFormat.ARGB4444 || texture.format == TextureFormat.RGBA32 || texture.format == TextureFormat.RGBA4444);
+            bool textureTransparent = texture != null && (texture.format == TextureFormat.Alpha8 || texture.format == TextureFormat.ARGB32 || texture.format == TextureFormat.ARGB4444 || texture.format == TextureFormat.RGBA32 || texture.format == TextureFormat.RGBA4444 || texture.format == TextureFormat.DXT5 || texture.format == TextureFormat.DXT5Crunched);
             if (textureTransparent)
                 mat.EnableKeyword("_ALPHATEST_ON");
             
