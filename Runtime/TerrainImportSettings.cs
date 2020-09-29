@@ -9,10 +9,11 @@ using UnityEngine;
 public class TerrainImportSettings : ScriptableObject {
 
     [System.Serializable]
-    public struct TreeNameGameObj
+    public class TreeNameGameObj
     {
         public string TreeName;
         public GameObject GameObj;
+        public float Scale = 1;
     }
 
     public TreeNameGameObj[] Trees;

@@ -292,7 +292,8 @@ namespace DatabaseImporter.Editor
                         if (child != transform)
                             GameObject.DestroyImmediate(child.gameObject);
 
-                    GameObject.Instantiate(treeNameGameObj.GameObj, transform.position, Quaternion.Euler(0, UnityEngine.Random.value * 360f, 0), transform);
+                    var treeInstance = GameObject.Instantiate(treeNameGameObj.GameObj, transform.position, Quaternion.Euler(0, UnityEngine.Random.value * 360f, 0), transform);
+                    treeInstance.transform.localScale = Vector3.one * treeNameGameObj.Scale;
                     return;
                 }
             }
