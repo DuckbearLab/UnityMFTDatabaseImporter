@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TerrainRefLatLon : MonoBehaviour {
 
-    public float RefLat;
-    public float RefLon;
+    public double RefLat;
+    public double RefLon;
 
-    public float OriginX;
-    public float OriginY;
+    public double OriginX;
+    public double OriginY;
 
 }

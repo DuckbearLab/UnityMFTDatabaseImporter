@@ -17,12 +17,12 @@ namespace DatabaseImporter.Importers
 
         public string Folder { get; private set; }
         public string DatasetName { get; private set; }
-        public float TerrainExtentX { get; private set; }
-        public float TerrainExtentY { get; private set; }
-        public float TerrainOriginX { get; private set; }
-        public float TerrainOriginY { get; private set; }
-        public float TerrainRefLat { get; private set; }
-        public float TerrainRefLon { get; private set; }
+        public double TerrainExtentX { get; private set; }
+        public double TerrainExtentY { get; private set; }
+        public double TerrainOriginX { get; private set; }
+        public double TerrainOriginY { get; private set; }
+        public double TerrainRefLat { get; private set; }
+        public double TerrainRefLon { get; private set; }
         public int NumTileTexels { get; private set; }
         public Dictionary<int, LevelData> LevelsData { get; private set; }
 
@@ -38,12 +38,12 @@ namespace DatabaseImporter.Importers
             ns.AddNamespace("ns", xml.DocumentElement.NamespaceURI);
 
             result.DatasetName = xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database", ns).Attributes["name"].Value;
-            result.TerrainExtentX = float.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Extent/ns:x", ns).InnerText);
-            result.TerrainExtentY = float.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Extent/ns:y", ns).InnerText);
-            result.TerrainOriginX = float.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Origin/ns:x", ns).InnerText);
-            result.TerrainOriginY = float.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Origin/ns:y", ns).InnerText);
-            result.TerrainRefLat = /*0;*/float.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:ProjectedCoordSys/ns:FlatEarth/ns:OriginLatitude", ns).InnerText);
-            result.TerrainRefLon = /*0;*/float.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:ProjectedCoordSys/ns:FlatEarth/ns:OriginLongitude", ns).InnerText);
+            result.TerrainExtentX = double.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Extent/ns:x", ns).InnerText);
+            result.TerrainExtentY = double.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Extent/ns:y", ns).InnerText);
+            result.TerrainOriginX = double.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Origin/ns:x", ns).InnerText);
+            result.TerrainOriginY = double.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:Coverage/ns:Origin/ns:y", ns).InnerText);
+            result.TerrainRefLat = /*0;*/double.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:ProjectedCoordSys/ns:FlatEarth/ns:OriginLatitude", ns).InnerText);
+            result.TerrainRefLon = /*0;*/double.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:ProjectedCoordSys/ns:FlatEarth/ns:OriginLongitude", ns).InnerText);
             try
             {
                 result.NumTileTexels = int.Parse(xml.SelectSingleNode("/ns:MetaFlightRoot/ns:Database/ns:VirtualTextureDataset/ns:NumTileTexels", ns).InnerText);

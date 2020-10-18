@@ -90,8 +90,8 @@ namespace DatabaseImporter.Importers
                 if(level.Columns > 4 && level.Columns > 4)
                 {
                     var minimap = ParentTransform.gameObject.AddComponent<TerrainMinimap>();
-                    minimap.MapMin = new Vector2(terrainMft.TerrainOriginX, terrainMft.TerrainOriginY);
-                    minimap.MapMax = new Vector2(terrainMft.TerrainOriginX + terrainMft.TerrainExtentX, terrainMft.TerrainOriginY + terrainMft.TerrainExtentY);
+                    minimap.MapMin = new Vector2((float) terrainMft.TerrainOriginX, (float) terrainMft.TerrainOriginY);
+                    minimap.MapMax = new Vector2((float) (terrainMft.TerrainOriginX + terrainMft.TerrainExtentX), (float) (terrainMft.TerrainOriginY + terrainMft.TerrainExtentY));
 
                     minimap.MapTextureParts = new Texture2D[level.Columns * level.Rows];
                     minimap.MapTexturePartsColumns = level.Columns;
@@ -265,14 +265,14 @@ namespace DatabaseImporter.Importers
         {
             int groupingAmount = Mathf.RoundToInt(Mathf.Pow(2, curPartLevel));
             Vector3 halfPartOffset = new Vector3(
-                terrainMft.TerrainExtentX / terrainMft.LevelsData[0].Columns / 2,
+                (float) (terrainMft.TerrainExtentX / terrainMft.LevelsData[0].Columns / 2),
                 0,
-                terrainMft.TerrainExtentY / terrainMft.LevelsData[0].Rows / 2
+                (float) (terrainMft.TerrainExtentY / terrainMft.LevelsData[0].Rows / 2)
                 );
             Vector3 partPosition = new Vector3(
-                (curPartCol / groupingAmount * groupingAmount) * terrainMft.TerrainExtentX / terrainMft.LevelsData[curPartLevel].Columns,
+                (float) ((curPartCol / groupingAmount * groupingAmount) * terrainMft.TerrainExtentX / terrainMft.LevelsData[curPartLevel].Columns),
                 0,
-                (curPartRow / groupingAmount * groupingAmount) * terrainMft.TerrainExtentY / terrainMft.LevelsData[curPartLevel].Rows);
+                (float) ((curPartRow / groupingAmount * groupingAmount) * terrainMft.TerrainExtentY / terrainMft.LevelsData[curPartLevel].Rows));
             //Vector3 terrainOffset = new Vector3(terrainMft.TerrainOriginX, 0, terrainMft.TerrainOriginY);
             terrainPart.transform.position = halfPartOffset + partPosition/* + terrainOffset*/;
         }
