@@ -144,7 +144,7 @@ public class PutCopy : MonoBehaviour
             {
 
                 List<Material> replaceWith;
-                if (textureSwitchesCache.TryGetValue(materials[i], out replaceWith))
+                if (materials[i] != null && textureSwitchesCache.TryGetValue(materials[i], out replaceWith))
                 {
                     materials[i] = ChooseRandomTexture(replaceWith, gameObj);
                     materialChanged = true;
